@@ -1,1 +1,9 @@
-<p>tutos-detail works!</p>
+
+    <a routerLink="/tutos/details/{{tutos._id}}">
+      <span>{{tutos._id}}</span> {{tutos.titre}}
+    </a>
+    <a routerLink="/tutos/details/{{tutos._id}}/update">update conseil </a>
+    <a routerLink="/tutos/details/{{tutos._id}}">detail conseil </a>
+    <a (click)="deleteTutos()" routerLink="/tutos/details/{{tutos._id}}"> delete</a>
+
+<router-outlet></router-outlet>

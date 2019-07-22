@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 
 
-mongoose.connect('mongodb://localhost:27017/tutos_site', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/tutos_site', { useNewUrlParser: true,useFindAndModify:false });
 
 const connection = mongoose.connection;
 
@@ -36,11 +36,74 @@ connection.once('open', () => {
 });
 
 
+//get tous les tutos
+
+router.route('/tutos').get((req, res) => {
+  Tuto.find(req.params.id,(err, liste) => {
+        if (err)
+            console.log(err);
+        else
+          console.log(req.params.id);
+            res.json(liste);
+
+    });
+});
+
+//get détail
+
+router.route('/tutos/details/:id').get((req, res) => {
+  Tuto.findById(req.params.id,(err, liste) => {
+        if (err)
+            console.log(err);
+        else
+          console.log(req.params.id);
+            res.json(liste);
+
+    });
+});
+
+
+
+//delete
+//
+//
+//
+
+router.route('/tutos/details/:id').delete((req, res, next) => {
+  Tuto.findOneAndRemove(req.params.id, (error, data) => {
+  if (error) {
+  return next(error);
+  } else {
+  res.status(200).json({
+  msg: data
+  })
+  }
+  })
+  })
+
+
+
+//a tester
+//post - ajouter un tuto
+
+router.post('/tutos/add', function(req, res, next) {
+  Tuto.create(req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 
 
 
 
+// update
 
+router.put('/tutos/details/:id/update', function(req, res, next) {
+Tuto.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 
 app.use('/', router);
 /*

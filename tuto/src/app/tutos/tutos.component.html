@@ -26,3 +26,15 @@
 
 
 </section>
+
+<ul >
+  <li *ngFor="let tuto of tutos">
+    <a routerLink="/tutos/details/{{tuto._id}}">
+      <span>{{tuto.id}}</span> {{tuto.titre}}
+    </a>
+    <a routerLink="/tutos/details/{{tuto._id}}/update">update conseil </a>
+    <a routerLink="/tutos/details/{{tuto._id}}">detail conseil </a>
+
+  </li>
+</ul>
+<router-outlet></router-outlet>
