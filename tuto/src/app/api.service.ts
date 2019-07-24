@@ -42,11 +42,11 @@ export class ApiService {
 
 
 
-  updateTuto(titre, id): Observable<any>  {
+  updateTuto(titre, id,texte): Observable<any>  {
       const obj = {
-        titre
+        titre,texte
       };
-      return this.http.put(`/tutos/details/${id}/update`, obj)
+      return this.http.put(`/tutos/details/${id}`, obj)
   }
 
 }

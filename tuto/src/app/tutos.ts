@@ -1,6 +1,6 @@
 export class Tuto {
   id: any;
   titre: string;
-  contenu:string;
+  texte:string;
   image:string;
 }

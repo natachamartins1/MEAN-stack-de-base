@@ -1,0 +1,60 @@
+[hidden] {
+   display: none;
+}
+#tutos{
+margin-top: 1em;
+
+h2{
+  padding-top: 2em;
+  font-size: 2em;
+  display: flex;
+  justify-content:center;
+  width: 100%;
+}
+
+article{
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+h3{
+  width: 100%;
+}
+  a{
+    margin: 1rem 0;
+    display: block;
+    width: 5em;
+    padding: .5em;
+    text-decoration: none;
+    border:blue 1px solid;
+    border-radius: 5px;
+    background-color: #2CAEC2;
+    color:#fff;
+
+  }
+
+  margin-top: 7em;
+figure{
+width: 50%;
+margin: 0;
+  img{
+
+    width:100%;
+    height: 100%;
+
+  }
+}
+div{
+max-width: 50%;
+display: inline-block;
+  p{
+    display: flex;
+    flex-wrap: wrap;
+
+
+  }
+
+  //margin: 5em;
+
+}
+}
+}

@@ -1,40 +1,39 @@
 <section id="tutos">
+<h2>{{title}}</h2>
+<ul>
+  <li *ngFor="let tuto of tutos">
+    <article>
 
-<article>
-  <figure>
-    <img src="../../assets/header.jpg" alt="">
-    <figcaption></figcaption>
-  </figure>
-  <div>
-      <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur incidunt saepe recusandae vitae fugit, illum dignissimos aspernatur itaque minima modi magni cupiditate atque sed voluptatibus.
-      </p>
-      <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur incidunt saepe recusandae vitae fugit, illum dignissimos aspernatur itaque minima modi magni cupiditate atque sed voluptatibus.
-      </p>
-      <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur incidunt saepe recusandae vitae fugit, illum dignissimos aspernatur itaque minima modi magni cupiditate atque sed voluptatibus.
-      </p>
-    <a href="">Lire la suite</a>
-  </div>
+      <figure>
+        <img src="../../assets/{{tuto.image}}" alt="">
+        <figcaption></figcaption>
+      </figure>
+      <div>
+          <h3>  {{tuto.titre}}</h3>
+          <p>
+            <!--Pipe utile !!!!!!!-->
+          {{tuto.texte | slice:0:150}} ...
+          </p>
 
 
+                  <a routerLink="/tutos/details/{{tuto._id}}">
+                    Lire la suite
+                  </a>
 
-</article>
+
+
+
+      </div>
+
+
+
+    </article>
+  </li>
+</ul>
 
 
 
 
 </section>
 
-<ul >
-  <li *ngFor="let tuto of tutos">
-    <a routerLink="/tutos/details/{{tuto._id}}">
-      <span>{{tuto.id}}</span> {{tuto.titre}}
-    </a>
-    <a routerLink="/tutos/details/{{tuto._id}}/update">update conseil </a>
-    <a routerLink="/tutos/details/{{tuto._id}}">detail conseil </a>
-
-  </li>
-</ul>
 <router-outlet></router-outlet>

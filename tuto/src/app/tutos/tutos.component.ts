@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Pipe } from '@angular/core';
 import { Tuto } from '../tutos';
 import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-tutos',
   templateUrl: './tutos.component.html',
@@ -18,17 +20,24 @@ constructor(  private route: ActivatedRoute,
 
 ngOnInit() {
   this.getTutos();
+
   //this.deleteTutos();
   //this.tableau.push("hhhhhhhhhhhhhhhhhhhhhh","yyyy");
 }
 
+
 getTutos(){
 this.apiService.getTutos().subscribe(
-(response:Tuto[]) =>{ this.tutos=response
+(response:Tuto[]) =>{
 
-console.log(response)},
+
+console.log(response);
+
+this.tutos=response;
+},
 ()=>console.log("error"),
 ()=>console.log('completed'+this.tutos[0]));
+
 }
 
 

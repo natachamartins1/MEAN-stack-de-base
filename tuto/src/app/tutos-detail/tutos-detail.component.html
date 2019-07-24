@@ -1,9 +1,68 @@
 
-    <a routerLink="/tutos/details/{{tutos._id}}">
-      <span>{{tutos._id}}</span> {{tutos.titre}}
-    </a>
-    <a routerLink="/tutos/details/{{tutos._id}}/update">update conseil </a>
-    <a routerLink="/tutos/details/{{tutos._id}}">detail conseil </a>
-    <a (click)="deleteTutos()" routerLink="/tutos/details/{{tutos._id}}"> delete</a>
+<section id="tutos">
+<h2>{{title}}</h2>
+
+    <article>
+
+      <figure>
+        <img src="../../assets/{{tuto.image}}" alt="">
+        <figcaption></figcaption>
+      </figure>
+      <div>
+          <h3>  {{tuto.titre}}</h3>
+          <p>
+
+          {{tuto.texte }} ...
+          </p>
+
+
+
+
+
+      </div>
+
+
+
+    </article>
+
+
+
+
+
+</section>
+
+
+
+    <a (click)="deleteTutos()" routerLink="/tutos/details/{{tuto._id}}"> delete</a>
+
+
+    <form [formGroup]="tutoForm" (ngSubmit)="onFormSubmit(tutoForm.value)">
+      <label for="titre">Titre: </label>
+
+        <input  id="titre" placeholder="titre" formControlName="titre">
+
+          <span *ngIf="!tutoForm.get('titre').valid && tutoForm.get('titre').touched">Please enter titre</span>
+
+
+          <label [hidden]="true"  for="_id">Id: </label>
+
+            <input [hidden]="true"  id="_id" value="{{tuto._id}}" placeholder="{{tuto._id}}" formControlName="_id">
+
+              <span *ngIf="!tutoForm.get('_id').valid && tutoForm.get('_id').touched">Please enter id</span>
+
+
+              <label for="texte">Texte: </label>
+
+                <textarea id="texte" placeholder="here your text" formControlName="texte">
+                </textarea>
+
+                  <span *ngIf="!tutoForm.get('texte').valid && tutoForm.get('texte').touched">Please enter text</span>
+
+
+      <div>
+        <button type="button" name="button" (click) = "updateTuto(titre.value,texte.value)">save</button>
+        <button type="submit" [disabled]="!tutoForm.valid" >save2</button>
+      </div>
+    </form>
 
 <router-outlet></router-outlet>

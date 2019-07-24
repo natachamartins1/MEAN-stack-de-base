@@ -4,12 +4,18 @@ import {  TutosComponent } from './tutos/tutos.component';
 import {  AstucesComponent } from './astuces/astuces.component';
 import {  ActualitesComponent } from './actualites/actualites.component';
 import {  TutosDetailComponent } from './tutos-detail/tutos-detail.component';
+import { LoginComponent } from './login/login.component';
+import {UserListComponentComponent} from './user-list-component/user-list-component.component';
+import { AuthGuard } from './auth.guard';
 const routes: Routes = [
     { path: 'tutos', component: TutosComponent },
 
     { path: 'tutos/details/:id', component: TutosDetailComponent },
     { path: 'astuces', component: AstucesComponent },
     { path: 'actualites', component: ActualitesComponent },
+    { path: 'users', component: UserListComponentComponent, canActivate: [AuthGuard] },
+    { path: 'login', component: LoginComponent},
+
 ];
 
 @NgModule({
