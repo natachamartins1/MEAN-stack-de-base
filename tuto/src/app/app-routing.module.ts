@@ -8,13 +8,14 @@ import { LoginComponent } from './login/login.component';
 import {UserListComponentComponent} from './user-list-component/user-list-component.component';
 import { AuthGuard } from './auth.guard';
 const routes: Routes = [
-    { path: 'tutos', component: TutosComponent },
+    { path: 'tutos', component: TutosComponent,canActivate: [AuthGuard] },
 
     { path: 'tutos/details/:id', component: TutosDetailComponent },
-    { path: 'astuces', component: AstucesComponent },
+    { path: 'astuces', component: AstucesComponent,canActivate: [AuthGuard] },
     { path: 'actualites', component: ActualitesComponent },
     { path: 'users', component: UserListComponentComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent},
+    
 
 ];
 

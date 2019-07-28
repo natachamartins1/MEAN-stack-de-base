@@ -19,7 +19,6 @@ export class TutosDetailComponent implements OnInit {
 tutoForm: FormGroup;
   titre:string='tet';
   texte:string;
-  image:string;
   id:any;
 
   constructor(private renderer:Renderer2,private el:ElementRef ,private route: ActivatedRoute,private router: Router, private apiService: ApiService, private formBuilder: FormBuilder) {
@@ -36,8 +35,32 @@ createForm() {
 
  }
 
+ modifier(form:NgForm){
 
 
+
+
+    let formb=document.getElementById("form");
+    let input= this.renderer.createElement("input");
+    this.renderer.setAttribute(input,"formControlName", "titre");
+
+    this.renderer.appendChild(formb,input);
+    const idt = this.route.snapshot.paramMap.get('id');
+  //  const titre = this.tutoForm.value["titre"];
+
+  const id= this.tutoForm.value["_id"];
+this.tutoForm.setValue({
+  titre:'jjjk',texte:'', image:'',_id:''
+});
+  const titrec=this.tutoForm.value["titre"];
+    const texte = this.tutoForm.value["texte"];
+        const image = this.tutoForm.value["image"];
+    this.apiService.updateTuto(titrec,idt,texte,image).subscribe(res => {
+
+
+    })
+
+  }
  onFormSubmit(form:NgForm) {
 
 
@@ -85,13 +108,18 @@ updateTuto(){
             this.apiService.getTuto(id)
               .subscribe(tuto => this.tuto = tuto);
           }
-
-
+          onChanges(): void {
+            this.tutoForm.valueChanges.subscribe(val => {
+     let titre=  (document.getElementById('titre') as HTMLInputElement).value;
+     console.log(titre);
+            });
+          }
 
 
                   ngOnInit(): void {
                     this.getTuto();
-
+                    this.createForm();
+                      this.onChanges();
 
 
                   }

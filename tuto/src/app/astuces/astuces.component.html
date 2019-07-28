@@ -1,1 +1,27 @@
-<p>astuces works!</p>
+
+<ul>
+
+  <li *ngFor="let astuce of astuces">
+    <article>
+
+      <figure>
+        <img src="../../assets/{{astuce.image}}" alt="">
+        <figcaption></figcaption>
+      </figure>
+      <div >
+          <h3 >  {{astuce.titre}}</h3>
+          <p>
+            <!--Pipe utile !!!!!!!-->
+          {{astuce.texte | slice:0:150}} ...
+          </p>
+
+
+
+
+      </div>
+
+
+
+    </article>
+  </li>
+</ul>

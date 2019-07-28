@@ -1,19 +1,44 @@
 #actualite{
+      padding: 4em;
+section{
+  width: 100%;
+div{
+  display: flex;
+  flex-direction: row;
+justify-content: space-around;
+padding: 0 2em;
+
+}
+    border: 3px solid #739527;
+    h4{
+      display: flex;
+      margin-bottom: 3em;
+      justify-content: center;
+      width: 100%;
+      background-color:#739527;
+      color:#fff;
+    }
+}
+  margin-top: 2em;
   display: flex;
   flex-direction: row;
 justify-content: space-around;
 flex-wrap: wrap;
-h3,h4{
+h3{
+
   display: flex;
   margin-bottom: 3em;
   justify-content: center;
   width: 100%;
+  font-size: 1.2em;
 }
   img{
-
-
-    width:20%;
-    height: 20%;
+margin:  2em;
+&:hover{
+  filter:brightness(.7);
+}
+    width:253px;
+    height: 101px;
   }
 
 }

@@ -1,7 +1,7 @@
 
 <section id="tutos">
 <h2>{{title}}</h2>
-
+<h3>Modifier / supprimer un tutoriel </h3>
     <article>
 
       <figure>
@@ -12,7 +12,7 @@
           <h3>  {{tuto.titre}}</h3>
           <p>
 
-          {{tuto.texte }} ...
+          {{tuto.texte }}
           </p>
 
 
@@ -24,7 +24,7 @@
 
 
     </article>
-
+  <a id="delete" (click)="deleteTutos()" routerLink="/tutos/details/{{tuto._id}}"> <i  class="fas fa-trash-alt fa-2x"></i>delete</a>
 
 
 
@@ -33,13 +33,13 @@
 
 
 
-    <a (click)="deleteTutos()" routerLink="/tutos/details/{{tuto._id}}"> delete</a>
 
 
-    <form [formGroup]="tutoForm" (ngSubmit)="onFormSubmit(tutoForm.value)">
+
+    <form [formGroup]="tutoForm" (ngSubmit)="onFormSubmit(tutoForm.value)" id="form">
       <label for="titre">Titre: </label>
 
-        <input  id="titre" placeholder="titre" formControlName="titre">
+        <input  id="titre" placeholder="titre" formControlName="titre" >
 
           <span *ngIf="!tutoForm.get('titre').valid && tutoForm.get('titre').touched">Please enter titre</span>
 
@@ -57,6 +57,13 @@
                 </textarea>
 
                   <span *ngIf="!tutoForm.get('texte').valid && tutoForm.get('texte').touched">Please enter text</span>
+
+                  <label for="titre">Image: </label>
+
+                    <input  id="image" placeholder="image" formControlName="image" >
+
+                      <span *ngIf="!tutoForm.get('image').valid && tutoForm.get('image').touched">Please enter picture</span>
+
 
 
       <div>

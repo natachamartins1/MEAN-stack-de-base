@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http'
 import { Observable, of } from 'rxjs';
 
 import {Tuto} from './tutos';
+import {Astuce} from './astuces';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,6 +20,14 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 //NB routes express = routes avec datas peut être différent de la route d'angular... On utilise juste la route express dans le service avec http
 //pour récupérer le contenu dans le composant. Mais le composant peut avoir une route différente
+
+
+getAstuces(): Observable<Tuto[]>{
+return this.http.get<Astuce[]>('/astuces');
+}
+
+//tuto
+
   getTutos(): Observable<Tuto[]>{
   return this.http.get<Tuto[]>('/tutos');
   }
@@ -30,7 +39,7 @@ export class ApiService {
   }
 
   postTuto(data): Observable<any> {
-    return this.http.post('/add', data)
+    return this.http.post('/tutos/add', data)
 
   }
 
@@ -42,7 +51,7 @@ export class ApiService {
 
 
 
-  updateTuto(titre, id,texte): Observable<any>  {
+  updateTuto(titre, id,texte,image): Observable<any>  {
       const obj = {
         titre,texte
       };

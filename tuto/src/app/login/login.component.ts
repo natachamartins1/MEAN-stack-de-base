@@ -6,11 +6,12 @@ import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
+  auths=false;
 /*
 public username: string;
 public password: string;
@@ -40,7 +41,7 @@ public error: string;
      const username = this.loginForm.value["username"];
      const password = this.loginForm.value["password"];
      this.auth.login(username, password).subscribe(
-         result => this.router.navigate(['tutos']),
+         result => this.router.navigate(['astuces']),
        //  err => this.error = 'Could not authenticate'
        );
        }
@@ -48,8 +49,11 @@ public error: string;
     const username = this.loginForm.value["username"];
     const password = this.loginForm.value["password"];
     this.auth.login(username, password).subscribe(
-        result => this.router.navigate(['tutos']),
-      //  err => this.error = 'Could not authenticate'
+        result =>{
+          this.auths=true;
+           this.router.navigate(['astuces'])
+        },
+        err => this.error = 'Could not authenticate'
       );
   }
 }
